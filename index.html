@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script><div>Please Select Dates:</div>
+	 <p>Strat Date:<input id ="startTime" type="text" ></input></p>
+	 <p>End Date:<input id ="endTime" type="text" ></input></p>
+   <script>
+   $(document).ready(function() {
+    var minDate ;
+    var maxDate;
+    var mDate
+    var j = jQuery.noConflict();
+    j( "#startTime" ).datepicker({
+    onSelect: function() {
+    minDate = j( "#startTime" ).datepicker("getDate");
+    var mDate = new Date(minDate.setDate(minDate.getDate()));
+    maxDate = new Date(minDate.setDate(minDate.getDate() + 11));
+j("#endTime").datepicker("setDate", maxDate);
+j( "#endTime" ).datepicker( "option", "minDate", mDate);
+j( "#endTime" ).datepicker( "option", "maxDate", maxDate);
+}
+});
+var tdate = new Date();
+var ddate = new Date(tdate.setDate(tdate.getDate() + 10));
+j("#startTime").datepicker("setDate", new Date());
+j( "#endTime" ).datepicker();
+j("#endTime").datepicker("setDate",ddate);
+  });
+</script>
+</body>
+</html>
